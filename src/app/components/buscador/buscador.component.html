@@ -1,0 +1,9 @@
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Search product. Ex: "Ipod"</mat-label>
+    <input matInput placeholder="ipod" [formControl]="product" required #newItem>
+    <mat-error *ngIf="product.invalid">{{getErrorMessage()}}</mat-error>
+
+  </mat-form-field>
+  <button mat-flat-button color="primary"(click)="addNewSearch(newItem.value)">search</button>
+</div>

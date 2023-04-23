@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-header">
+    Agregar Usuario
+  </div>
+  <div class="card-body">
+    <form
+      [formGroup]="myForm"
+      (ngSubmit)="registro()" >
+
+
+      <div class="mb-3">
+        <label for="" class="form-label">correo</label>
+        <input type="email"
+          formControlName="email" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Ingrese un correo Electrónico">
+
+      </div>
+      <div *ngIf="myForm.get('email')?.errors && myForm.get('email')?.dirty">
+        <p *ngIf="myForm.get('email')?.hasError('required')">El Campo Ingresado es Obligatorio</p>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="" class="form-label">Contraseña</label>
+        <input type="text" class="form-control" name="" formControlName="contraseña" id="" aria-describedby="helpId" placeholder="Ingresa tu contraseña">
+        <p *ngIf="myForm.get('email')?.hasError('minlength')">debe tener al menos 6 caracteres</p>
+      </div>
+      <div *ngIf="myForm.get('contraseña')?.errors && myForm.get('contraseña')?.dirty">
+        <p *ngIf="myForm.get('contraseña')?.hasError('required')">El Campo Ingresado es Obligatorio</p>
+        <p *ngIf="myForm.get('email')?.hasError('minlength')">debe tener al menos 6 caracteres</p>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Button group name">
+        <button type="submit" class="btn btn-success">Agregar</button>
+        <button type="button" class="btn btn-primary">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

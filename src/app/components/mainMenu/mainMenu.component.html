@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="nav navbar-nav" >
+      <div *ngIf="isLogin">
+        <a class="nav-item nav-link" (click)="logout()" *ngIf="initmenu">Logout</a>
+      </div>
+      <div *ngIf="!isLogin">
+        <a class="nav-item nav-link" routerLink="/Login" *ngIf="initmenu">Login</a>
+      </div>
+
+
+  </div>
+</nav>
