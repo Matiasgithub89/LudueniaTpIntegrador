@@ -7,25 +7,30 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
+  resultado!: string;
   myForm:FormGroup;
   constructor(
     private authService:AuthService,
     public fb:FormBuilder
   ) { }
+
+  formularioContacto = this.fb.group({
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    pass: ['', [Validators.required, Validators.minLength(6)]]
+  });
   login(){
     this.authService.login();
     console.log("Usted se logueo")
   }
-  ngOnInit() {
-    console.log("llego al ngOninit")
-    this.myForm=this.fb.group({
-      email:['',Validators.required,Validators.minLength(6)],
-      contraseña:['',Validators.required,Validators.minLength(6)]
-    })
-  }
-  registro():any{
-    console.log("datos del form:",this.myForm.value);
+
+  submit() {
+    if (this.formularioContacto.valid){
+      this.resultado = "Todos los datos son válidos-Usted Esta logueado";
+      this.authService.login();
+      console.log("Usted se logueo")
+    }else{
+      this.resultado = "Hay datos inválidos en el formulario";}
   }
 
 }

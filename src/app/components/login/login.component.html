@@ -1,40 +1,40 @@
-<div class="card">
-  <div class="card-header">
-    Login
-  </div>
-  <div class="card-body">
-    <form
-      [formGroup]="myForm"
-      (ngSubmit)="registro()" >
+<mat-card class="example-card">
+  <mat-card-header>
 
+    <mat-card-title>Formulario de Login</mat-card-title>
+    <mat-card-subtitle>Loguea pero no registra.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="formularioContacto" (ngSubmit)="submit()" class="form">
+      <mat-form-field appearance="fill" class="field">
+      <mat-label>Nombre:</mat-label>
+        <input matInput placeholder="Nombre" type="text" formControlName="nombre" required>
+        <mat-error *ngIf="this.formularioContacto.get('nombre')?.errors?.['required']">
+          (El nombre no puede quedar vacío)
+        </mat-error>
+        <mat-error *ngIf="this.formularioContacto.get('nombre')?.errors?.['minlength']">
+          (Debe tener como mínimo 3 caracteres)
+        </mat-error>
+      </mat-form-field>
 
-      <div class="mb-3">
-        <label for="" class="form-label">Usuario</label>
-        <input type="email"
-          formControlName="email" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Ingrese un correo Electrónico">
-
-      </div>
-      <div *ngIf="myForm.get('email')?.errors && myForm.get('email')?.dirty">
-        <p *ngIf="myForm.get('email')?.hasError('required')">El Campo Ingresado es Obligatorio</p>
-      </div>
-
-
-      <div class="mb-3">
-        <label for="" class="form-label">Contraseña</label>
-        <input type="text" class="form-control" name="" formControlName="contraseña" id="" aria-describedby="helpId" placeholder="Ingresa tu contraseña">
-        <p *ngIf="myForm.get('email')?.hasError('minlength')">debe tener al menos 6 caracteres</p>
-      </div>
-      <div *ngIf="myForm.get('contraseña')?.errors && myForm.get('contraseña')?.dirty">
-        <p *ngIf="myForm.get('contraseña')?.hasError('required')">El Campo Ingresado es Obligatorio</p>
-        <p *ngIf="myForm.get('email')?.hasError('minlength')">debe tener al menos 6 caracteres</p>
-      </div>
-
-      <div class="btn-group" role="group" aria-label="Button group name">
-        <button type="submit" class="btn btn-success" (click)="login()">Login</button>
-        <button type="button" class="btn btn-primary">Cancelar</button>
-      </div>
-
+      <mat-form-field appearance="fill" class="field">
+        <mat-label>contraseña:</mat-label>
+        <input matInput placeholder="Contraseña" type="text" formControlName="pass" required>
+        <mat-error *ngIf="this.formularioContacto.get('pass')?.errors?.['required']">
+          (Debe Ingresar una Contraseña)
+        </mat-error>
+        <mat-error *ngIf="this.formularioContacto.get('pass')?.errors?.['minlength']">
+          (La contraseña debe tener minimo 6 caracteres)
+        </mat-error>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" >Confirmar</button>
+      </mat-card-actions>
     </form>
-  </div>
+    <div>{{resultado}}</div>
+  </mat-card-content>
 
-</div>
+</mat-card>
+
+
+
