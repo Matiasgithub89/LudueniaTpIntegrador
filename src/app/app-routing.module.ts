@@ -12,6 +12,7 @@ const routes: Routes = [
   {path:'Catalogo-NotLogued', component:CatalogoComponent},
   {path:'Detalle', component:DetalleComponent},
   {path:'Registro', component:RegistroComponent},
+  {path:'Registro/:{producto}', component:RegistroComponent},
   {path:'Login', component:LoginComponent},
   {path:'**',component:NotfoundComponent}
 ];
